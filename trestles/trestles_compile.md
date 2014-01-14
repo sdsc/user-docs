@@ -12,9 +12,10 @@ The PGI compilers should be loaded automatically in your environment; however, i
 And source the environment:
 
     [user@trestles ~]$ source ~/.bashrc
+.
 
         | Serial    | MPI       | OpenMP
--------------------------------------------------------
+--------|-----------|-----------|----------------------
 Fortran | pgf90     | mpif90    | pgf90 -mp
 C       | pgcc      | mpicc     | pgcc -mp
 C++     | pgCC      | mpicxx    | pgCC -mp
@@ -31,9 +32,10 @@ The Intel compilers can be loaded by modifying your %7e/.bashrc or ~/.cshrc to i
 And source the environment:
 
     [user@trestles ~]$ source ~/.bashrc
+.
 
         | Serial    | MPI       | OpenMP
--------------------------------------------------------
+--------|-----------|-----------|----------------------
 Fortran | ifort     | mpif90    | ifort -openmp
 C       | icc       | mpicc     | icc -openmp
 C++     | icpc      | mpicxx    | icpc -openmp
@@ -52,9 +54,10 @@ The GNU compilers can be loaded by modifying your %7e/.bashrc or ~/.cshrc to inc
 And source the environment:
 
     [user@trestles ~]$ source ~/.bashrc
+.
 
         | Serial    | MPI       | OpenMP
--------------------------------------------------------
+--------|-----------|-----------|----------------------
 Fortran | gfortran  | mpif90    | gfortran -fopenmp
 C       | gcc       | mpicc     | gcc -fopenmp
 C++     | g++       | mpicxx    | g++ -fopenmp

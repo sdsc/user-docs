@@ -6,7 +6,7 @@ In order to serve a large number of moderate-scale users and improve turnaround 
 
 Logging in to Trestles
 ----------------------
-Trestles supports Single Sign On through the XSEDE User Portal and from the command line using a XSEDE-wide password. Users wanting to SSH into trestles directly will need to first receive a local Trestles password by completing the form.
+Trestles supports Single Sign On through the XSEDE User Portal and from the command line using a XSEDE-wide password. Users wanting to SSH into trestles directly will need to first receive a local Trestles password by completing the [form](http://www.sdsc.edu/us/consulting/password.html).
 
 To log in to Trestles from the command line, use the following hostname:
 

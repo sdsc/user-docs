@@ -2,7 +2,7 @@ Trestles User Guide: Technical Summary
 ======================================
 Trestles is a dedicated XSEDE cluster designed by Appro and SDSC consisting of 324 compute nodes. Each compute node contains four sockets, each with a 8-core 2.4 GHz AMD Magny-Cours processor, for a total of 32 cores per node and 10,368 total cores for the system. Each node has 64 GB of DDR3 RAM, with a theoretical memory bandwidth of 171 Gb/s. The compute nodes are connected via QDR InfiniBand interconnect, fat tree topology, with each link capable of 8 Gb/s (bidrectional). Trestles has a theoretical peak performance of 100 TFlop/s.
 
-System Component        Configuration
+System Component        | Configuration
 ------------------------|-----------------------------------
 AMD Magny-Cours Compute Nodes |
                         |

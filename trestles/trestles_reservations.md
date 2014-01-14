@@ -10,13 +10,13 @@ Creating a Reservation
 
 * The command to create a reservation is user_set_res. The format is:
 
-    $ user_set_res --account=<allocation>  --nodes=<#_nodes> 
+        $ user_set_res --account=<allocation>  --nodes=<#_nodes> 
             --duration=<time_in_seconds> --earliest_start=<time_MM/DD/YYYY>
             --latest_end=<time_MM/DD/YYYY> --email=<email>
 
     For Example:
 
-    $ user_set_res --account=TG-XXXXX --nodes=2 --duration=3600 --earliest_start=10:30_03/10/2011
+        $ user_set_res --account=TG-XXXXX --nodes=2 --duration=3600 --earliest_start=10:30_03/10/2011
             --latest_end=15:00_03/10/2011 --email=user@sdsc.edu
 
     creates a reservation that requests 2 nodes for 1 hour starting at earliest 10:30 on March 10, 2011 and ending at the latest 15:00 March 10,2011.
