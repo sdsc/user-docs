@@ -2,7 +2,7 @@ Gordon User Guide: Running Jobs on Regular Compute Nodes
 ========================================================
 Gordon uses the TORQUE Resource Manager, together with the Catalina Scheduler, to manage user jobs. If you’re familiar with PBS, note that TORQUE is based on the original PBS project and shares most of its syntax and user interface. Whether you run in batch mode or interactively, you will access the compute nodes using the qsub command as described below. Remember that computationally intensive jobs should be run only on the compute nodes and not the login nodes. Gordon has two queues available:
 
-Queue Name  |   Max Walltime    Max Nodes   Comments
+Queue Name  |   Max Walltime  | Max Nodes | Comments
 ------------|-----------------|-----------|-------------
 normal      |   48 hrs        | 64        | Used for exclusive access to regular (non-vsmp) compute nodes
 vsmp        |   48 hrs        | 1         | Used for shared access to vamp node
@@ -55,7 +55,7 @@ The following command shows how to get interactive use of one node, with flash, 
 
 Monitoring and deleting jobs
 ----------------------------
-Use the qstat command to monitor your jobs and qdel to delete a job. Some useful options are described below. For a more detailed understanding of the queues see the User Guide section Torque in Depth.
+Use the qstat command to monitor your jobs and qdel to delete a job. Some useful options are described below. For a more detailed understanding of the queues see the User Guide section [Torque in Depth](gordon_torque.md).
 
 Running MPI jobs – regular compute nodes
 ----------------------------------------

@@ -78,7 +78,7 @@ While ps gives a static view of the processes, top can be used to provide a dyna
 In the first example below, the CPU usage is around 600% for all five processes, indicating that each process had spawned multiple threads. We can confirm this by enabling top to display thread-level information with the H option. (This option can either be specified on the top command line or entered after top is already running)
 
     [diag@gcn-4-28 ~]$ top # Processes only
-        PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+      PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
     22356 cipres    25   0  961m 251m 2316 R 600.0  0.4 481:32.53 raxmlHPC
     22359 cipres    25   0  959m 252m 2312 R 600.0  0.4 481:31.90 raxmlHPC                                                               
     22355 cipres    25   0  958m 256m 7448 R 599.6  0.4 481:31.55 raxmlHPC                                                            
@@ -87,7 +87,7 @@ In the first example below, the CPU usage is around 600% for all five processes,
     [ --- Additional lines not shown ---]
 
     [diag@gcn-4-28 ~]$ top H # Processes and threads
-        PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
+      PID USER      PR  NI  VIRT  RES  SHR S %CPU %MEM    TIME+  COMMAND
     22355 cipres    25   0  958m 256m 7448 R 100.1  0.4  82:35.68 raxmlHPC                                                              
     22387 cipres    25   0  958m 256m 7448 R 100.1  0.4  82:35.70 raxmlHPC                                                              
     22388 cipres    25   0  958m 256m 7448 R 100.1  0.4  82:35.93 raxmlHPC                                                               

@@ -43,7 +43,7 @@ SDSC provides several Lustre-based parallel file systems. These include a shared
 
 SDSC Projects Storage has 400 TB of capacity and is available to all allocated users of Trestles and Gordon. It is accessible at:
 
-/oasis/projects/nsf/<allocation>/<user>
+    /oasis/projects/nsf/<allocation>/<user>
 
 Where <allocation> is your 6-character allocation name, found by running show_accounts. The default allocation is 500 GB of Project Storage to be shared among all users of a project. Projects that require more than 500 GB of Project Storage must request additional space by sending an email to help@xsede.org. This e-mail from the project PI should provide a justification in 500 words or fewer that includes:
 
