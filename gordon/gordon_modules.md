@@ -4,20 +4,20 @@ The Environment Modules package provides for dynamic modification of your shell 
 
 For example, if the Intel module and mvapich2_ib module are loaded and the user compiles with mpif90, the generated code is compiled with the Intel Fortran 90 compiler and linked with the mvapich2_ib MPI libraries.
 
-Several modules that determine the default Gordon environment are loaded at login time. These include the MVAPICH implementation of the MPI library and the Intel compilers. We strongly suggest that you use this combination whenever possible to get the best performance.
+Several modules that determine the default Gordon environment are loaded at login time. These include the MVAPICH2 implementation of the MPI library and the Intel compilers. We strongly suggest that you use this combination whenever possible to get the best performance.
 
 Useful Modules Commands
 -----------------------
 Here are some common module commands and their descriptions:
 
-Command | Description
---------|------------
-module list | List the modules that are currently loaded
-module avail | List the modules that are available
-module display <module_name> | Show the environment variables used by <module name> and how they are affected
-module unload <module name> | Remove <module name> from the environment
-module load <module name> | Load <module name> into the environment
-module swap <module one> <module two> | Replace <module one> with <module two> in the environment
+Command                         |Description
+--------------------------------|------------------------------
+module list                     |List the modules that are currently loaded
+module avail                    |List the modules that are available
+module display <module_name>    |Show the environment variables used by <module name> and how they are affected
+module unload <module name>     |Remove <module name> from the environment
+module load <module name>       |Load <module name> into the environment
+module swap <module one> <module two>   |Replace <module one> with <module two> in the environment
 
 Loading and unloading modules 
 -----------------------------
