@@ -1,6 +1,6 @@
 Gordon User Guide: System Access
 --------------------------------
-As an XSEDE computing resource, Gordon is accessible to XSEDE users who are given time on the system. In order to get an account, users will need to submit a proposal through the XSEDE User Portal https://portal.xsede.org.
+As an XSEDE computing resource, Gordon is accessible to XSEDE users who are given time on the system. In order to get an account, users will need to submit a proposal through the [XSEDE Allocation Request System](https://portal.xsede.org/group/xup/allocations-overview).
 
 Interested users may contact SDSC User Services for assistance with applying for time on Gordon (see sidebar for contact information).
 
