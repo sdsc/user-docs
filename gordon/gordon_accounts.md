@@ -19,8 +19,8 @@ Project PIs and co-PIs can add or remove users from an account. To do this, log 
 
 Charging
 --------
-The charge unit for all SDSC machines, including Gordon, is the SU (service unit) and corresponds to the use of one compute core for one hour. Keep in mind that your charges are based on the resources that are tied up by your job and don’t necessarily reflect how the resources are used.
+The charge unit for all SDSC machines, including Gordon, is the SU (service unit) and corresponds to the use of one compute core for one hour. Keep in mind that your charges are based on the resources that are tied up by your job and don't necessarily reflect how the resources are used.
 
-Unlike some of SDSC’s other major compute resources, Gordon does not provide for shared use of a compute node. A serial job that requests a compute node for one hour will be charged 16 SUs (16 cores x 1 hour), regardless of how the processors-per-node parameter is set in the batch script.
+Unlike some of SDSC's other major compute resources, Gordon does not provide for shared use of a compute node. A serial job that requests a compute node for one hour will be charged 16 SUs (16 cores x 1 hour), regardless of how the processors-per-node parameter is set in the batch script.
 
 The large memory vSMP nodes on the other hand will be charged only for the cores they request.  Be sure to request as many cores as your job needs, but be aware that if you request all 256 cores within a vSMP node your job will be charged at the rate of 256 SUs per hour.
