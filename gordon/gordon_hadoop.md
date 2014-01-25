@@ -33,9 +33,9 @@ The example scripts have a large number of parameters, configuration settings, a
     You can also set a wall clock limit, email notification, and account to charge:
 
         #PBS -l walltime=1:00:00
-        #PBS -M EMAILADDRESS
+        #PBS -M user@domain.edu
         #PBS -m abe
-        #PBS -A ACCOUNT
+        #PBS -A abc123
 
 3. Using the high-performance interconnect
 

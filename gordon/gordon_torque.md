@@ -18,7 +18,7 @@ Running the qstat command without any arguments shows the status of all batch jo
     5.gordon user3    normal  stats1    8    --  12:00 Q   --
     6.gordon user3    normal  stats2    8    --  12:00 E 15:27
 
-The output is mostly self-explanatory, but a few points are worth mentioning. The Job ID listed in the first column will be needed if you want to alter, delete, or obtain more information about a job.  On SDSC resources, only the numeric portion of the Job ID is needed. The queue, number of nodes, wall time, and required memory specified in your batch script are also listed. For jobs that have started running, the elapsed time is shown. The column labeled “S” lists the job status.
+The output is mostly self-explanatory, but a few points are worth mentioning. The Job ID listed in the first column will be needed if you want to alter, delete, or obtain more information about a job.  On SDSC resources, only the numeric portion of the Job ID is needed. The queue, number of nodes, wall time, and required memory specified in your batch script are also listed. For jobs that have started running, the elapsed time is shown. The column labeled "S" lists the job status.
 
 * R = running
 * Q = queued
@@ -28,9 +28,9 @@ The output is mostly self-explanatory, but a few points are worth mentioning. Th
 
 Jobs can be put into a held state for a number of reasons including job dependencies (e.g. task2 cannot start until task1 completes) or a user exceeding the number of jobs that can be in a queued state.
 
-On a busy system, the qstat output can get to be quite long. To limit the output to just your own jobs, use the -u username option
+On a busy system, the qstat output can get to be quite long. To limit the output to just your own jobs, use the -u $USER option
 
-    $ qstat -a -u user2
+    $ qstat -a -u $USER
                                            Req'd  Req'd  Elap
     Job ID   Username Queue   Jobname NDS  Memory Time S Time
     -------- -------- ------  ------- --- ------ ----- - -----
@@ -39,11 +39,11 @@ On a busy system, the qstat output can get to be quite long. To limit the output
 
 Detailed information for a job (qstat -f jobid)
 -----------------------------------------------
-Running qstat -f  jobid provides the full status for a job. In addition to the basic information listed by qstat -a, this includes the job’s start time, compute nodes being used, CPU and memory usage, and account being charged.
+Running qstat -f <jobid> provides the full status for a job. In addition to the basic information listed by qstat -a, this includes the job's start time, compute nodes being used, CPU and memory usage, and account being charged.
 
 Nodes allocated to a job (qstat -n jobid)
 -----------------------------------------
-To see the list of nodes allocated to a job, use qstat -n. Note that this output doesn’t reflect actual usage, but rather the resources that had been requested. Knowing where your job is running is valuable information since you’ll be able to access those nodes for the duration of your job to monitor processes, threads, and resource utilization.
+To see the list of nodes allocated to a job, use qstat -n. Note that this output doesn't reflect actual usage, but rather the resources that had been requested. Knowing where your job is running is valuable information since you'll be able to access those nodes for the duration of your job to monitor processes, threads, and resource utilization.
 
 Altering job properties (qalter)
 --------------------------------
@@ -61,33 +61,6 @@ The qalter command can be used to modify the properties of a job. Note that the 
     Job ID   Username Queue   Jobname NDS  Memory Time S Time
     -------- -------- ------  ------- --- ------ ----- - -----
     8.gordon user2    normal  task1    32    --  09:00 R  6:15
-
-Obtaining queue properties (qstat -q)
--------------------------------------
-Queue properties, including the walltime and nodes limits, can be obtained using qstat -q. More detailed information in an alternative format is displayed using the qmgr command.
-
-    $ qstat -q
-    server: gordon-fe2.local
-    
-    Queue            Memory CPU Time Walltime Node  Run Que Lm  State
-    ---------------- ------ -------- -------- ----  --- --- --  -----
-    normal             --      --    48:00:00    64  57   6 --   E R
-    vsmp               --      --    48:00:00     1   2   1 --   E R
-                                                   ----- -----
-                                                      59     7
-    
-    $ qmgr -c 'list queue normal'
-    Queue normal
-    queue_type = Execution
-    total_jobs = 63
-    state_count = Transit:0 Queued:6 Held:0 Waiting:0 Running:57 Exiting:0 
-    resources_max.nodect = 64
-    resources_max.walltime = 48:00:00
-    mtime = Wed Feb 29 14:25:41 2012
-    resources_assigned.mem = 0b
-    resources_assigned.nodect = 442
-    enabled = True
-    started = True
 
 Specifying job dependencies
 ---------------------------
@@ -110,4 +83,4 @@ The full set of attributes for the nodes can be listed using pbsnodes -a. To lim
 
 Node states (pbsnodes -l)
 -------------------------
-Running pbsnodes -l lists nodes that are unavailable to the batch systems (e.g. have a status of “down”, “offline”, or “unknown”). To see the status of all nodes, use pbsnodes -l all. Note that nodes with a “free” status are not necessarily available to run jobs. This status applies both to nodes that are idle and to nodes that are running jobs using a ppn value smaller than the number of physical cores.
+Running pbsnodes -l lists nodes that are unavailable to the batch systems (e.g. have a status of "down", "offline", or "unknown"). To see the status of all nodes, use pbsnodes -l all. Note that nodes with a "free" status are not necessarily available to run jobs. This status applies both to nodes that are idle and to nodes that are running jobs using a ppn value smaller than the number of physical cores.  This command, in combination with qstat -n <jobid>, is an easy way to identify if your job has aborted due to a node failure.

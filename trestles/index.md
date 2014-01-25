@@ -22,7 +22,7 @@ Total memory            | 20.7 TB
 Total memory bandwidth  | 55.4 TB/s
 Total flash memory      | 39 TB
 QDR InfiniBand Interconnect     |
-Topology                | Fat tree
+Topology                | Full-bisection fat tree
 Link bandwidth          | 8 Gb/s (bidirectional)
 Peak bisection bandwidth| 5.2 Tb/s (bidirectional)
 MPI latency             | 1.3 µs
@@ -42,8 +42,8 @@ File Systems            | NFS, Lustre
 Scheduler and Resource Manager |  Catalina, TORQUE
 XSEDE Software          | CTSS
 User Environment        | Modules
-Compilers               | Intel and PGI Fortran, C, C++
-Message Passing         | Intel MPI, MVAPICH, Open MPI
+Compilers               | Intel, PGI, and GNU; Fortran, C, C++
+Message Passing         | MVAPICH2, OpenMPI
 Debugger                | DDT
-Performance             | IPM, mpiP, PAPI, TAU
+Performance             | IPM, PAPI, TAU
 

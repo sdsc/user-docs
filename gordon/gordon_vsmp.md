@@ -8,7 +8,7 @@ Most applications will be run on the regular compute nodes, but in certain insta
 
 Before reading this section, we suggest that you first become familiar with the user guide sections that cover [compiling](gordon_compiling.md) and [running](gordon_running.md) jobs.
 
-Compilation instructions are the same for the regular compute nodes and the vSMP nodes, although ScaleMP’s specially tuned version of MPICH2 should be used when building MPI applications.
+Compilation instructions are the same for the regular compute nodes and the vSMP nodes, although ScaleMP's specially tuned version of MPICH2 should be used when building MPI applications.
 
 Jobs are submitted to the vSMP nodes using TORQUE and, with the exception of specifying a different queue name, all of the instructions given in the user guide sections describing the batch submission system still apply. In the remainder of this section, we describe the additional steps needed to make effective use of the vSMP nodes. Note that we do not provide complete scripts below, but rather just the critical content needed to run under vSMP.
 
@@ -38,9 +38,9 @@ The example below shows a partial batch script for an OpenMP job that will use 1
 
 The first export statement preloads the vSMP libraries needed for an application to run on the vSMP nodes. The second export statement is not strictly required, but is suggested since using the Hoard library can lead to improved performance particularly when multiple threads participate in dynamic memory management. The third export statement prepends the PATH variable with the location of the numabind command, while the fourth sets the number of OpenMP threads.
 
-The final export statement requires a more in depth explanation and contains the “magic” for running on a vSMP node. Setting the KMP_AFFINITY variable determines how the threads will be mapped to compute cores. Note that it is used only for OpenMP jobs and will not affect the behavior of pThreads codes.
+The final export statement requires a more in depth explanation and contains the "magic" for running on a vSMP node. Setting the KMP_AFFINITY variable determines how the threads will be mapped to compute cores. Note that it is used only for OpenMP jobs and will not affect the behavior of pThreads codes.
 
-The assignment maps the threads compactly to cores, as opposed to spreading out across cores, provides verbose output (will appear in the job’s stderr file), and starts the mapping with the first core in the set. The numabind statement looks for an optimal set of 16 contiguous cores, where optimal typically means that the cores span the smallest number of physical nodes and have the lightest load. Enclosing within the back ticks causes the numabind output to appear in place as the final argument in the definition.
+The assignment maps the threads compactly to cores, as opposed to spreading out across cores, provides verbose output (will appear in the job's stderr file), and starts the mapping with the first core in the set. The numabind statement looks for an optimal set of 16 contiguous cores, where optimal typically means that the cores span the smallest number of physical nodes and have the lightest load. Enclosing within the back ticks causes the numabind output to appear in place as the final argument in the definition.
 
 For most users, this KMP_AFFINITY assignment will be adequate, but be aware that there are many options for controlling the placement of OpenMP threads. For example, to run on 16 cores evenly spaced and alternating over 32 contiguous cores, set the ppn and offset values to 32, the number of threads to 16, and the affinity type to scatter. Relevant lines are shown below.
 
@@ -99,7 +99,7 @@ To run an MPI job, where the number of processes equals the number of compute co
     vsmputil --unpinall 
     time mpirun -np 32 ./mpitest 
 
-The situation is slightly more complicated if the number of MPI processes is smaller than the number of requested cores. Typically you will want to spread the MPI processes evenly across the requested cores (e.g. when running 2 MPI processes across 64 cores, the processes will be mapped to cores 1 and 33). In the example below the placement has been changed from “PACKED” to “SPREAD^2^32”. The SPREAD keyword indicates that the processes should be spread across the cores and “^2^32” is a user defined topology of 2 nodes with 32 cores per node.
+The situation is slightly more complicated if the number of MPI processes is smaller than the number of requested cores. Typically you will want to spread the MPI processes evenly across the requested cores (e.g. when running 2 MPI processes across 64 cores, the processes will be mapped to cores 1 and 33). In the example below the placement has been changed from "PACKED" to "SPREAD^2^32". The SPREAD keyword indicates that the processes should be spread across the cores and "^2^32" is a user defined topology of 2 nodes with 32 cores per node.
 
     #PBS -q vsmp  
     #PBS -l nodes=1:ppn=64:vsmp
@@ -116,4 +116,3 @@ We have only touched on the basics required for job submission. For additional i
 
 * [Thread Affinity Interface (KMP_AFFINITY)](http://software.intel.com/sites/products/documentation/studio/composer/en-us/2011Update/compiler_c/optaps/common/optaps_openmp_thread_affinity.htm)
 * [The Hoard Memory Allocator](http://people.cs.umass.edu/~emery/hoard/hoard-documentation.html)
-* [vSMP Foundation numabind](http://www.scalemp.com/uploads/guidelines/NUMABIND_README.txt)
