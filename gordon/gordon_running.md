@@ -37,7 +37,9 @@ TORQUE batch scripts consist of two main sections. The top section specifies the
 
 The first line indicates that the file is a bash script and can therefore contain any valid bash code. The lines starting with "#PBS" are special comments that are interpreted by TORQUE and must appear before any user commands.
 
-The second line states that we want to run in the queue named "normal". Lines three and four define the resources being requested: 2 nodes with 16 processors per node, for one hour (1:00:00). The next three lines (5-7) are not essential, but using them will make it easier for you to monitor your job and keep track of your output. In this case, the job will be appear as "my_jobname" in the queue; stdout and stderr will be directed to "my.out" and "my.err", respectively. The next line specifies that the usage should be charged to account abc123. Lines 9 and 10 control email notification: notices should be sent to "user@domain.edu" when the job aborts (a), begins (b), or ends (e).
+The second line states that we want to run in the queue named "normal". Lines three and four define the resources being requested: 2 nodes with 16 processors per node, for one hour (1:00:00). The next three lines (5-7) are not essential, but using them will make it easier for you to monitor your job and keep track of your output. In this case, the job will be appear as "my_jobname" in the queue; stdout and stderr will be directed to "my.out" and "my.err", respectively. 
+
+The next line specifies that the usage should be charged to account abc123, and you can determine your account with the `show_accounts` command (see the Account Management section below). Lines 9 and 10 control email notification: notices should be sent to "user@domain.edu" when the job aborts (a), begins (b), or ends (e).
 
 Finally, "#PBS -V" specifies that your current environment variables should be exported to the job. For example, if the path to your executable is found in your PATH variable and your script contains the line "#PBS -V", then the path will also be known to the batch job.
 
@@ -123,6 +125,26 @@ To get nodes spanning the minimum number of hops for jobs of different sizes, us
 
 If you do not specify a Catalina_maxhops value for jobs larger than 16 nodes, your job will use the default of Catalina_maxhops=None and scatter your job across all of Gordon's 4x4x4 torus.  The maximum distance between any two node pairs is 6 hops. 
 
-Note and hints
---------------
-Try to provide a realistic upper estimate for the wall time required by your job. This will often improve your turnaround time, especially on a heavily loaded machine.
+Account Management
+------------------
+You can find your remaining Service Units (SUs) balance by running the `show_accounts` command:
+
+    [gordonuser@gordon-ln1 ~]$ show_accounts
+    ID name      project      used     available    used_by_proj
+    ------------------------------------------------------------
+    gordonuser   abc123       296918   543856       297188  
+
+Where the 'project' is your six-character projectid, 'used' reflects the SUs you've used on that projectid, 'available' is how many SUs you have left, and 'used_by_proj' are the number of SUs used by everyone on that project.
+
+To get a detailed breakdown of each user's usage on an allocation, you can run the `proj_details` command followed by your projectid:
+
+    [gordonuser@gordon-ln1 ~]$ proj_details abc123
+    Project abc123 on sdsc_gordon
+    Total allocation  543856
+    Total spent       297188
+    Expiration        30-JUN-14
+
+       userid        spent     can spend          real name        
+    ------------   ---------   ---------  -------------------------
+      gordonuser     296918       543856  Gordon T. User
+     usernumber2        270       543856  User N. Two
