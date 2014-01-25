@@ -5,12 +5,12 @@ Gordon provides the Intel, Portland Group (PGI), and GNU compilers along with mu
 
 All three compilers now support the Advanced Vector Extensions (AVX). Using AVX, up to eight floating point operations can be executed per cycle per core, potentially doubling the performance relative to non-AVX processors running at the same clock speed. Note that AVX support is not enabled by default and compiler flags must be set as described below.
 
-Using the Intel compilers (Default/Suggested)
+Using the Intel Compilers (Default/Suggested)
 ---------------------------------------------
-The Intel compilers and the MVAPICH2 MPI implementation will be loaded by default. If you have modified your environment, you can reload by executing the following commands at the Linux prompt or placing in your startup file (~/.cshrc or ~/.bashrc)
+The Intel compilers and the MVAPICH2 MPI implementation will be loaded by default. If you have modified your environment, you can reload them by executing the following commands at the Linux prompt or by placing them in your startup file (~/.cshrc or ~/.bashrc)
 
     module purge
-    module load intel mvapich2_ib
+    module load gnubase intel mvapich2_ib
 
 For AVX support, compile with the -xHOST option. Note that -xHOST alone does not enable aggressive optimization, so compilation with -O3 is also suggested. The -fast flag invokes -xHOST, but should be avoided since it also turns on interprocedural optimization (-ipo), which may cause problems in some instances.
 
@@ -24,12 +24,12 @@ C++     | icpc   | mpicxx | icpc -openmp  | mpicxx -openmp
 
 Note for vSMP users on Gordon - MPI applications intended for use on the large memory vSMP nodes should use MPICH2 instead of MVAPICH2. This version of MPICH2 has been specially tuned for optimal vSMP message passing performance.
 
-Using the PGI compilers
+Using the PGI Compilers
 -----------------------
-The PGI compilers can be loaded by executing the following commands at the Linux prompt or placing in your startup file (~/.cshrc or ~/.bashrc)
+The PGI compilers can be loaded by executing the following commands at the Linux prompt or placing them in your startup file (~/.cshrc or ~/.bashrc)
 
 module purge
-module load pgi mvapich2_ib
+module load gnubase pgi mvapich2_ib
 
 For AVX support, compile with -fast
 
@@ -41,12 +41,12 @@ Fortran | pgf90  | mpif90 | pgf90 -mp     | mpif90 -mp
 C       | pgcc   | mpicc  | pgcc -mp      | mpicc -mp
 C++     | pgCC   | mpicxx | pgCC -mp      | mpicxx -mp
 
-Using the GNU compilers
+Using the GNU Compilers
 -----------------------
-The GNU compilers can be loaded by executing the following commands at the Linux prompt or placing in your startup files (~/.cshrc or ~/.bashrc)
+The GNU compilers can be loaded by executing the following commands at the Linux prompt or placing them in your startup file (~/.cshrc or ~/.bashrc)
 
     module purge
-    module load gnu openmpi
+    module load gnubase gnu openmpi_ib
 
 For AVX support, compile with -mavx. 
 
