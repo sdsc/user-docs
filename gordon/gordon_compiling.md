@@ -24,8 +24,6 @@ C++     | icpc   | mpicxx | icpc -openmp  | mpicxx -openmp
 
 Note for vSMP users on Gordon - MPI applications intended for use on the large memory vSMP nodes should use MPICH2 instead of MVAPICH2. This version of MPICH2 has been specially tuned for optimal vSMP message passing performance.
 
-Note for C/C++ users: compiler warning - feupdateenv is not implemented and will always fail. For most users, this error can safely be ignored. By default, the Intel C/C++ compilers only link against Intel's optimized version of the C standard math library (libmf). The error stems from the fact that several of the newer C99 library functions related to floating point rounding and exception handling have not been implemented.
-
 Using the PGI compilers
 -----------------------
 The PGI compilers can be loaded by executing the following commands at the Linux prompt or placing in your startup file (~/.cshrc or ~/.bashrc)
@@ -50,8 +48,8 @@ The GNU compilers can be loaded by executing the following commands at the Linux
     module purge
     module load gnu openmpi
 
-For AVX support, compile with -mavx. Note that AVX support is only available in version 4.6 or later, so it is necessary to explicitly load the gnu/4.6.1 module until such time that it becomes the default.
- 
+For AVX support, compile with -mavx. 
+
 For more information on the GNU compilers: man [gfortran | gcc | g++]
 
         | Serial   | MPI    | OpenMP         | MPI+OpenMP
