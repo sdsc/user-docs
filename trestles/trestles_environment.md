@@ -2,9 +2,9 @@ Trestles User Guide: User Environment
 =====================================
 The Environment Modules package provides for dynamic modification of your shell environment. Module commands set, change, or delete environment variables, typically in support of a particular application. They also let the user choose between different versions of the same software or different combinations of related codes.
 
-For example, if the Intel module and mvapich module are loaded and the user compiles with mpif90, the generated code is compiled with the Intel Fortran 90 compiler and MPI libraries using the MVAPICH implementation are linked.
+For example, if the Intel module and mvapich2_ib module are loaded and the user compiles with mpif90, the generated code is compiled with the Intel Fortran 90 compiler and linked with the mvapich2_ib MPI libraries.
 
-Several modules that determine the default Trestles environment are loaded at login time.
+Several modules that determine the default Trestles environment are loaded at login time.  These include the MVAPICH2 implementation of MPI and the PGI compilers.  We strongly suggest that you use this combination whenever possible to get the best performance.
 
 Useful Modules Commands
 -----------------------
@@ -23,21 +23,12 @@ Loading and unloading modules
 -----------------------------
 You must remove some modules before loading others.
 
-Some modules depend on others, so they may be loaded or unloaded as a consequence of another module command. For example, if intel and openmpi are both loaded, running the command module unload intel will automatically unload openmpi. Subsequently issuing the module load intel command does not automatically reload openmpi.
+Some modules depend on others, so they may be loaded or unloaded as a consequence of another module command. For example, if `intel` and `mvapich2_ib` are both loaded, running the command `module unload intel` will automatically unload `mvapich2_ib`.  Subsequently issuing the `module load intel` command does not automatically reload `mvapich2_ib`.
 
-Complete documentation is available in the module(1) and modulefile(4) manpages.
+If you find yourself regularly using a set of module commands, you may want to add these to your configuration files (.bashrc for bash users, .cshrc for C shell users). Complete documentation is available in the module(1) and modulefile(4) manpages.
 
-module: command not found
+Module: command not found
 -------------------------
-If you get the error module: command not found this is caused by a problem with the module environment when switching from your default shell to a different shell, e.g., from bash to ksh, or csh to bash, etc. If this error is displayed, run the command:
+The error message module: command not found is sometimes encountered when switching from one shell to another or attempting to run the module command from within a shell script or batch job.  The reason that the module command may not be inherited as expected is that it is defined as a function for your login shell. If you encounter this error execute the following from the command line (interactive shells) or add to your shell script (including Torque batch scripts)
 
-    . /etc/profile.d/modules.sh
-
-Allocations
------------
-Users can find their remaining Service Units (SUs) balance by running the command:
-
-    [user@trestles-login ~]$ show_accounts
-    ID name    project           used         available     used_by_proj
-    ----------------------------------------------------------------------------
-    <user>   <project>   <SUs used by user>  <SUs available> <SUs used by project>
+    source /etc/profile.d/modules.sh
