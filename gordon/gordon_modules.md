@@ -23,7 +23,7 @@ Loading and unloading modules
 -----------------------------
 You must remove some modules before loading others.
 
-Some modules depend on others, so they may be loaded or unloaded as a consequence of another module command. For example, if intel and mvapich are both loaded, running the command module unload intel will automatically unload mvapich. Subsequently issuing the module load intel command does not automatically reload mvapich.
+Some modules depend on others, so they may be loaded or unloaded as a consequence of another module command. For example, if `intel` and `mvapich2_ib` are both loaded, running the command `module unload intel` will automatically unload `mvapich2_ib`.  Subsequently issuing the `module load intel` command does not automatically reload `mvapich2_ib`.
 
 If you find yourself regularly using a set of module commands, you may want to add these to your configuration files (.bashrc for bash users, .cshrc for C shell users). Complete documentation is available in the module(1) and modulefile(4) manpages.
 
