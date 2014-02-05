@@ -35,6 +35,10 @@ For the vSMP nodes, /scratch is a symbolic link to /scratch1 and is provided to 
 
 The directories are purged immediately after the job terminates, therefore any desired files should be copied to either the home or parallel file system before the end of the job.
 
+### Noflash Nodes:
+
+A small subset of Gordon nodes do not have a flash filesystem. If your job does not require the use of SSDs, you may wish to explicit request the "noflash" property when submitting your job (e.g., #PBS -l nodes=1:ppn=16:native:noflash) to prevent it from having to wait for flash-equipped compute nodes to become available. By default, all non-interactive jobs go to nodes with SSD scratch space, and the noflash nodes are only allocated when explicitly requested.
+
 Parallel Lustre File System
 ---------------------------
 SDSC provides several Lustre-based parallel file systems. These include a shared Projects Storage area that is mounted on both Gordon and Trestles plus separate scratch file systems. Collectively known as Data Oasis, these file systems are accessed through 64 Object Storage Servers (OSSs) and will have an eventual capacity of 4 PB.
