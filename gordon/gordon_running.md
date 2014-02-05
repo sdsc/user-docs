@@ -53,6 +53,12 @@ The following command shows how to get interactive use of one node, with flash, 
 
     qsub -I -q normal -l nodes=2:ppn=16:native:flash,walltime=30:00 -A abc123
 
+If your interactive job does not need the flash filesystem, you may also explicitly request the "noflash" property to utilize the subset of Gordon nodes without a SSD:
+
+    qsub -I -q normal -l nodes=2:ppn=16:native:noflash,walltime=30:00 -A abc123
+
+If neither :flash or :noflash is requested, the interactive job may land on a mix of nodes with and without SSDs. Be reminded that this only applies to jobs submitted without a batch script, and jobs submitted via a submission script automatically receive the :flash property.
+
 Monitoring and deleting jobs
 ----------------------------
 Use the qstat command to monitor your jobs and qdel to delete a job. Some useful options are described below. For a more detailed understanding of the queues see the User Guide section [Torque in Depth](gordon_torque.md).
