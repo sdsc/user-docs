@@ -21,6 +21,7 @@ Gordon User Guide
 Tutorials
 ---------
 * [Hadoop](gordon_hadoop.md)
+* [Python](gordon_python.md)
 * VisIt - Not under version control
 * MATLAB - Not under version control
     * Keypairs - Not under version control
