@@ -1,9 +1,9 @@
 Gordon User Guide: Python
 -------------------------
 
-Gordon has already a `python` environment setup which can be activated by loading the `python` module:
+Gordon has already a `python` environment setup which can be activated by loading the `python` and `scipy` modules:
 
-    module load python # add this to .bashrc to load it at every login
+    module load python scipy # add this to .bashrc to load it at every login
 
 ## Install virtualenv
 
@@ -14,7 +14,7 @@ Then we need to setup a sandboxed local environment to install other packages, b
 
 Then create your own virtualenv and load it:
 
-	mkdir ~/venv
+    mkdir ~/venv
     python virtualenv-*/virtualenv.py ~/venv/py
     source ~/venv/py/bin/activate # add this to .bashrc to load it at every login
 
